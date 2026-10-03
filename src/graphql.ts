@@ -6,12 +6,28 @@ export const LIFT_PLAN_QUERY = gql`
       id
       name
       revision
+      snapshotId
+      publishedAt
       status
       steps {
         id
         name
         loadRate
         clearance
+      }
+    }
+  }
+`;
+
+export const LIFT_VERSIONS_QUERY = gql`
+  query LiftPlanVersions($id: ID!) {
+    liftPlanVersions(id: $id) {
+      id
+      versions {
+        revision
+        snapshotId
+        publishedAt
+        publisher
       }
     }
   }
@@ -31,6 +47,8 @@ graphqlClient.writeQuery({
       id: 'LP-2026-0918',
       name: '东塔转换桁架吊装',
       revision: 4,
+      snapshotId: null,
+      publishedAt: null,
       status: 'REVIEW',
       steps: []
     }
