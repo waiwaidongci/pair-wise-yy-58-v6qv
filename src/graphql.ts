@@ -9,9 +9,21 @@ export const LIFT_PLAN_QUERY = gql`
       status
       steps {
         id
-        name
+        title
+        time
         loadRate
         clearance
+        wind
+        radius
+        boom
+        status
+        note
+      }
+      signoffs {
+        role
+        name
+        status
+        signedAt
       }
     }
   }
@@ -32,7 +44,8 @@ graphqlClient.writeQuery({
       name: '东塔转换桁架吊装',
       revision: 4,
       status: 'REVIEW',
-      steps: []
+      steps: [],
+      signoffs: []
     }
   }
 });
